@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/layout.xhtml">
+	<ui:define name="content">
+		<b:container>
+ 	    		<b:jumbotron>
+ 	    			
+ 	    			<b:messages/>
+ 	    			
+					<h:form>
+        				<h1 class="form-signin-heading">Please sign in</h1>
+
+        				<div class="form-group">
+							<div class="input-group">
+								<span id="j_idt8_input-group-addon" class="input-group-addon"><i>@</i></span><b:inputText
+									id="email" name="email" type="email" class="form-control"
+									placeholder="Email address" value="#{loginBean.user.userEmail}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span id="j_idt9_input-group-addon" class="input-group-addon"><i
+									id="j_idt9_icon" class="fa fa-key"></i></span><b:inputText id="password"
+									name="password" type="password" class="form-control"
+									placeholder="Password" value="#{loginBean.user.userPassword}" />
+							</div>
+						</div>
+
+						<h:commandButton action="#{loginBean.login}" id="j_idt11" name="j_idt11"
+							class="btn btn-lg btn-primary btn-block" value="Sign in">
+						</h:commandButton>
+					</h:form>
+				</b:jumbotron>
+        	</b:container>
+	</ui:define>
+</ui:composition>
+</html>
