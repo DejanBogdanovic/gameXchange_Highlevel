@@ -13,23 +13,28 @@ import ch.bbcag.gamexchange.highlevel.model.User;
 public class EditProfileBean {
 	
 	private User user;
+	private HttpSession session;
 	
 	public EditProfileBean() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		user = (User) session.getAttribute("user");
+		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		user = (User) session.getAttribute("user");		
 	}
 	
 	public String edit() {
 		if(user.updateUser(user)) {
 			return "dashboard.xhtm?faces-redirect=true";
 		} else {	
-			String message = "An error occurred. Please check your input and try it again."
-					+ user.getName() + user.getLastname() + user.getUserName() + user.getUserEmail() + user.getUserPassword() + user.getUserPasswordRepeat()
-					+ user.getDomicile() + user.getPostcode() + user.getCountry();
+			String message = "An error occurred. Please try it again later.";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, ""));
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 			return "editProfile.xhtml?faces-redirect=true";
 		}
+	}
+	
+	public String delete() {
+		user.deleteUser(user);
+		session.invalidate();
+		return "index.xhtml?faces-redirect=true";
 	}
 
 	public User getUser() {

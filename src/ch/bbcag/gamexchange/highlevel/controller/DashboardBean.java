@@ -11,9 +11,10 @@ import ch.bbcag.gamexchange.highlevel.model.User;
 @RequestScoped
 public class DashboardBean {
 	private User user;
+	private HttpSession session;
 	
 	public DashboardBean() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		user = (User) session.getAttribute("user");
 	}
 
