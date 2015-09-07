@@ -16,8 +16,8 @@
         	
         	<c:if test="#{sessionBean.isLoggedIn() == false}">
     			<b:navbarLinks pull="right">
-        			<b:navLink value="Login" href="login.xhtml"></b:navLink>
-        			<b:navLink value="Register" href="register.xhtml"></b:navLink>
+        			<b:navLink value="Login" href="login.xhtml?faces-redirect=true"></b:navLink>
+        			<b:navLink value="Register" href="register.xhtml?faces-redirect=true"></b:navLink>
     			</b:navbarLinks>
     		</c:if>
     		<c:if test="#{sessionBean.isLoggedIn()}">
